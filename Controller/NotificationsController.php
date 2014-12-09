@@ -103,7 +103,7 @@ class NotificationsController extends Controller
         $notification->setRawData(json_encode($request->request->all()));
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($response);
+        $em->persist($notification);
         $em->flush();
 
         $event = new NotificationEvent($notification);
