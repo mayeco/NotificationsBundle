@@ -61,7 +61,10 @@ class NotificationsController extends Controller
         }
 
         $response->setRawData(json_encode($request->query->all()));
-        $this->update($response);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($response);
+        $em->flush();
 
         $event = new ResponseEvent($response);
         $this->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
@@ -96,7 +99,10 @@ class NotificationsController extends Controller
         }
 
         $notification->setRawData(json_encode($request->request->all()));
-        $this->update($notification);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($response);
+        $em->flush();
 
         $event = new NotificationEvent($notification);
         $this->dispatch("notification." . strtolower($notification->getMessageType()), $event);
