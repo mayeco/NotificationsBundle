@@ -44,10 +44,8 @@ class NotificationsController extends Controller
 
         $response = new ResponseEntity();
         $form = $this->createResponseCreateForm($response);
-
-        $data = $request->query->all();
-        $data['md5_hash'] = $request->query->get('key');
-        $form->submit($data);
+        $request->query->add(array("md5_hash" => $request->query->get('key')));
+        $form->submit($request->query->all());
 
         if (!$form->isValid()) {
             $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
