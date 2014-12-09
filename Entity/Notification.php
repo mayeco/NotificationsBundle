@@ -17,7 +17,6 @@
 
 namespace Mayeco\NotificationsBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,7 +36,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="message_type", type="string", length=255)
-     * @Assert\NotBlank(message="not blank message_type")
      */
     private $message_type;
 
@@ -52,7 +50,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="vendor_id", type="string", length=255)
-     * @Assert\NotBlank(message="not blank vendor_id")
      */
     private $vendor_id;
 
@@ -60,7 +57,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="sale_id", type="string", length=255)
-     * @Assert\NotBlank(message="not blank invoice_id")
      */
     private $sale_id;
 
@@ -82,7 +78,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="invoice_id", type="string", length=255)
-     * @Assert\NotBlank(message="not blank invoice_id")
      */
     private $invoice_id;
 
@@ -118,7 +113,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="auth_exp", type="date", nullable=true)
-     * @Assert\Date()
      */
     private $auth_exp;
 
@@ -154,7 +148,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="sale_date_placed", type="datetime", nullable=true)
-     * @Assert\Date()
      */
     private $sale_date_placed;
 
@@ -162,7 +155,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="timestamp", type="datetime", nullable=true)
-     * @Assert\Date()
      */
     private $timestamp;
 
@@ -324,8 +316,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="item_rec_date_next", type="date", nullable=true)
-     *
-     * @Assert\Date()
      */
     private $item_rec_date_next_1;
 
