@@ -17,6 +17,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`
 
 A bundle for [2Checkout](https://www.2checkout.com/documentation/notifications/) notifications, use it at your **own risk**.
 
+changes in routing.yml
+
+    mayeco_notifications:
+        resource: "@MayecoNotificationsBundle/Resources/config/routing.xml"
+        prefix:   /notifications
+
+changes in config.yml
+
     mayeco_notifications:
         secret_word: your_2checkout_secret_word
         user_id: your_2checkout_user_id
