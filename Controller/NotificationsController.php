@@ -42,9 +42,6 @@ class NotificationsController extends Controller
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Incorrect Hash.');
         }
 
-        $logger = $this->get('logger');
-        $dispatcher = $this->get('event_dispatcher');
-
         $response = new ResponseEntity();
         $form = $this->createResponseCreateForm($response);
 
@@ -53,8 +50,8 @@ class NotificationsController extends Controller
         $form->submit($data);
 
         if (!$form->isValid()) {
-            $dispatcher->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
-            $logger->error("Error de respuesta de datos get: " . $form->getErrorsAsString());
+            $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
+            $this->get('logger')->error("Error de respuesta de datos get: " . $form->getErrorsAsString());
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
@@ -62,9 +59,9 @@ class NotificationsController extends Controller
         $em->persistAndflush($response);
 
         $event = new ResponseEvent($response);
-        $dispatcher->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
+        $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
 
-        $logger->info('New response success', array(
+        $this->get('logger')->info('New response success', array(
             'OrderNumber_Id' => $response->getOrderNumber(),
         ));
 
@@ -79,16 +76,13 @@ class NotificationsController extends Controller
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Incorrect Hash.');
         }
 
-        $logger = $this->get('logger');
-        $dispatcher = $this->get('event_dispatcher');
-
         $notification = new Notification();
         $form = $this->createNotificationCreateForm($notification);
         $form->submit($request->request->all());
 
         if (!$form->isValid()) {
-            $dispatcher->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
-            $logger->error("Error de envio de datos post: " . $form->getErrorsAsString());
+            $this->get('event_dispatcher')->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
+            $this->get('logger')->error("Error de envio de datos post: " . $form->getErrorsAsString());
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
@@ -96,9 +90,9 @@ class NotificationsController extends Controller
         $this->persistAndflush($notification);
 
         $event = new NotificationEvent($notification);
-        $dispatcher->dispatch("notification." . strtolower($notification->getMessageType()), $event);
+        $this->get('event_dispatcher')->dispatch("notification." . strtolower($notification->getMessageType()), $event);
 
-        $logger->info('New notifcation success', array(
+        $this->get('logger')->info('New notifcation success', array(
             'NOTIFICATION_ID' => $notification->getMessageId(),
         ));
 
