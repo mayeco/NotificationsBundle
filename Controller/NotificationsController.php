@@ -50,27 +50,21 @@ class NotificationsController extends Controller
 
         $data = $request->query->all();
         $data['md5_hash'] = $request->query->get('key');
-
         $form->submit($data);
 
         if (!$form->isValid()) {
-
             $dispatcher->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
             $logger->error("Error de respuesta de datos get: " . $form->getErrorsAsString());
-
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
         $response->setRawData(json_encode($request->query->all()));
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($response);
-        $em->flush();
+        $em->persistAndflush($response);
 
         $event = new ResponseEvent($response);
         $dispatcher->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
 
-        $logger->info('Respuesta recibida con exito', array(
+        $logger->info('New response success', array(
             'OrderNumber_Id' => $response->getOrderNumber(),
         ));
 
@@ -93,23 +87,18 @@ class NotificationsController extends Controller
         $form->submit($request->request->all());
 
         if (!$form->isValid()) {
-
             $dispatcher->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
             $logger->error("Error de envio de datos post: " . $form->getErrorsAsString());
-
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
         $notification->setRawData(json_encode($request->request->all()));
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($notification);
-        $em->flush();
+        $this->persistAndflush($notification);
 
         $event = new NotificationEvent($notification);
         $dispatcher->dispatch("notification." . strtolower($notification->getMessageType()), $event);
 
-        $logger->info('Notificacion recibida con exito', array(
+        $logger->info('New notifcation success', array(
             'NOTIFICATION_ID' => $notification->getMessageId(),
         ));
 
@@ -149,4 +138,12 @@ class NotificationsController extends Controller
 
         return $StringToHash == $md5hash;
     }
+
+    private function persistAndflush($object)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($object);
+        $em->flush();
+    }
+
 }
