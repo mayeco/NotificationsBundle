@@ -26,11 +26,12 @@ use Mayeco\NotificationsBundle\NotificationEvent;
 use Mayeco\NotificationsBundle\ResponseEvent;
 use Mayeco\NotificationsBundle\NotificationErrorEvent;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class NotificationsController extends \Mayeco\BaseBundle\Controller\Controller
+class NotificationsController extends Controller
 {
 
     public function getResponseAction(Request $request)
