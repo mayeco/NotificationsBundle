@@ -56,7 +56,7 @@ class NotificationsController extends Controller
         }
 
         $response->setRawData(json_encode($request->query->all()));
-        $em->persistAndflush($response);
+        $this->persistAndflush($response);
 
         $event = new ResponseEvent($response);
         $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
