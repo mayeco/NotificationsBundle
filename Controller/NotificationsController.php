@@ -51,7 +51,7 @@ class NotificationsController extends Controller
 
         if (!$form->isValid()) {
             $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
-            $this->get('logger')->error("Error de respuesta de datos get: " . $form->getErrorsAsString());
+            $this->get('logger')->error("Response error: " . $form->getErrorsAsString());
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
@@ -82,7 +82,7 @@ class NotificationsController extends Controller
 
         if (!$form->isValid()) {
             $this->get('event_dispatcher')->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
-            $this->get('logger')->error("Error de envio de datos post: " . $form->getErrorsAsString());
+            $this->get('logger')->error("Notification error: " . $form->getErrorsAsString());
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
         }
 
