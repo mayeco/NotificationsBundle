@@ -19,83 +19,31 @@ namespace Mayeco\NotificationsBundle;
 
 final class NotificationEvents
 {
-    /**
-     *
-     * @Event
-     */
+
     const ORDER_CREATED = 'notification.order_created';
 
-    /**
-     *
-     * @Event
-     */
     const FRAUD_STATUS_CHANGED = 'notification.fraud_status_changed';
 
-    /**
-     *
-     * @Event
-     */
     const SHIP_STATUS_CHANGED = 'notification.ship_status_changed';
 
-    /**
-     *
-     * @Event
-     */
     const INVOICE_STATUS_CHANGED = 'notification.invoice_status_changed';
 
-    /**
-     *
-     * @Event
-     */
     const REFUND_ISSUED = 'notification.refund_issued';
 
-    /**
-     *
-     * @Event
-     */
     const RECURRING_INSTALLMENT_SUCCESS = 'notification.recurring_installment_success';
 
-    /**
-     *
-     * @Event
-     */
     const RECURRING_INSTALLMENT_FAILED = 'notification.recurring_installment_failed';
 
-    /**
-     *
-     * @Event
-     */
     const RECURRING_STOPPED = 'notification.recurring_stopped';
 
-    /**
-     *
-     * @Event
-     */
     const RECURRING_COMPLETE = 'notification.recurring_complete';
 
-    /**
-     *
-     * @Event
-     */
     const RECURRING_RESTARTED  = 'notification.recurring_restarted';
 
-    /**
-     *
-     * @Event
-     */
     const NOTIFICATION_ERROR  = 'notification.error';
 
-
-    /**
-     *
-     * @Event
-     */
     const RESPONSE_SUCCESS = 'response.success';
 
-    /**
-     *
-     * @Event
-     */
     const RESPONSE_ERROR  = 'response.error';
 
 }
