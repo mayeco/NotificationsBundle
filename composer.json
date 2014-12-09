@@ -1,0 +1,26 @@
+{
+    "name": "mayeco/notifications-bundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "2Checkout notifications for Symfony2",
+    "keywords": ["2checkout notifications"],
+    "homepage": "https://github.com/mayeco/NotificationsBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mario Young",
+            "email": "yo@maye.co"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "psr-4": { "Mayeco\\NotificationsBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
