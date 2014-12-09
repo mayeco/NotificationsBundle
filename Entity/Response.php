@@ -33,7 +33,6 @@ class Response
      */
     protected $id;
 
-
     /**
      * @var string
      *
@@ -72,12 +71,6 @@ class Response
      */
     private $md5_hash;
 
-
-
-
-
-
-
     /**
      * @var string
      *
@@ -112,14 +105,6 @@ class Response
      * @ORM\Column(name="pay_method", type="string", length=255, nullable=true)
      */
     private $pay_method;
-
-
-
-
-
-
-
-
 
     /**
      * @var string
@@ -162,17 +147,6 @@ class Response
      * @ORM\Column(name="zip", type="string", length=255, nullable=true)
      */
     private $zip;
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @var string
@@ -222,18 +196,6 @@ class Response
      * @ORM\Column(name="ip_country", type="string", length=255, nullable=true)
      */
     private $ip_country;
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @var string
@@ -291,18 +253,12 @@ class Response
      */
     private $li_0_type;
 
-
-
-
     /**
      * @var string
      *
      * @ORM\Column(name="raw_data", type="text", nullable=true)
      */
     private $raw_data;
-
-
-
 
     /**
      * @return mixed
