@@ -17,7 +17,6 @@
 
 namespace Mayeco\NotificationsBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,7 +36,6 @@ class Response
      * @var string
      *
      * @ORM\Column(name="invoice_id", type="string", length=255)
-     * @Assert\NotBlank(message="not blank invoice_id")
      */
     private $invoice_id;
 
@@ -52,7 +50,6 @@ class Response
      * @var string
      *
      * @ORM\Column(name="sid", type="string", length=255)
-     * @Assert\NotBlank(message="not blank sid")
      */
     private $sid;
 
@@ -67,7 +64,6 @@ class Response
      * @var string
      *
      * @ORM\Column(name="md5_hash", type="string", length=255)
-     * @Assert\NotBlank(message="not blank md5_hash")
      */
     private $md5_hash;
 
