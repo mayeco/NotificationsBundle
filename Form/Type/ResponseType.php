@@ -15,7 +15,7 @@
  * MIT license.
  */
 
-namespace Mayeco\NotificationsBundle\Form;
+namespace Mayeco\NotificationsBundle\Type\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
