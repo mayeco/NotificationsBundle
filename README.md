@@ -15,4 +15,4 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`
 
-A bundle for 2checkout.com notifications, use it at your **own risk**.
+A bundle for [2Checkout](https://www.2checkout.com/documentation/notifications/) notifications, use it at your **own risk**.
