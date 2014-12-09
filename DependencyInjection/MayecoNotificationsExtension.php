@@ -32,5 +32,6 @@ class MayecoNotificationsExtension extends Extension
 
         $container->setParameter("mayeco_notifications.secret_word", $config["secret_word"]);
         $container->setParameter("mayeco_notifications.user_id", $config["user_id"]);
+        $container->setParameter("mayeco_notifications.redirection_route", $config["redirection_route"]);
     }
 }
