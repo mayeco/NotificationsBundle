@@ -60,7 +60,6 @@ class NotificationsController extends Controller
 
         $event = new ResponseEvent($response);
         $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
-
         $this->get('logger')->info('New response success', array(
             'OrderNumber_Id' => $response->getOrderNumber(),
         ));
@@ -91,7 +90,6 @@ class NotificationsController extends Controller
 
         $event = new NotificationEvent($notification);
         $this->get('event_dispatcher')->dispatch("notification." . strtolower($notification->getMessageType()), $event);
-
         $this->get('logger')->info('New notifcation success', array(
             'NOTIFICATION_ID' => $notification->getMessageId(),
         ));
