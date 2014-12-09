@@ -19,8 +19,8 @@ namespace Mayeco\NotificationsBundle\Controller;
 
 use Mayeco\NotificationsBundle\Entity\Notification;
 use Mayeco\NotificationsBundle\Entity\Response as ResponseEntity;
-use Mayeco\NotificationsBundle\Form\NotificationType;
-use Mayeco\NotificationsBundle\Form\ResponseType;
+use Mayeco\NotificationsBundle\Form\Type\NotificationType;
+use Mayeco\NotificationsBundle\Form\Type\ResponseType;
 use Mayeco\NotificationsBundle\NotificationEvents;
 use Mayeco\NotificationsBundle\NotificationEvent;
 use Mayeco\NotificationsBundle\ResponseEvent;
