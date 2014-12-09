@@ -16,3 +16,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`
 
 A bundle for [2Checkout](https://www.2checkout.com/documentation/notifications/) notifications, use it at your **own risk**.
+
+    mayeco_notifications:
+        secret_word: your_2checkout_secret_word
+        user_id: your_2checkout_user_id
+        redirection_route: your_redirect_route
