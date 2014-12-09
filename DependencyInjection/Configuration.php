@@ -40,6 +40,10 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->isRequired()
                 ->end()
+                ->scalarNode('redirection_route')
+                    ->cannotBeEmpty()
+                    ->isRequired()
+                ->end()
             ->end()
         ->end()
         ;
