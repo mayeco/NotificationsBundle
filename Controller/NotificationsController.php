@@ -43,6 +43,7 @@ class NotificationsController extends Controller
         }
 
         $logger = $this->get('logger');
+        $dispatcher = $this->get('event_dispatcher');
 
         $response = new ResponseEntity();
         $form = $this->createResponseCreateForm($response);
@@ -54,7 +55,7 @@ class NotificationsController extends Controller
 
         if (!$form->isValid()) {
 
-            $this->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
+            $dispatcher->dispatch(NotificationEvents::RESPONSE_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
             $logger->error("Error de respuesta de datos get: " . $form->getErrorsAsString());
 
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
@@ -67,7 +68,7 @@ class NotificationsController extends Controller
         $em->flush();
 
         $event = new ResponseEvent($response);
-        $this->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
+        $dispatcher->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
 
         $logger->info('Respuesta recibida con exito', array(
             'OrderNumber_Id' => $response->getOrderNumber(),
@@ -85,6 +86,7 @@ class NotificationsController extends Controller
         }
 
         $logger = $this->get('logger');
+        $dispatcher = $this->get('event_dispatcher');
 
         $notification = new Notification();
         $form = $this->createNotificationCreateForm($notification);
@@ -92,7 +94,7 @@ class NotificationsController extends Controller
 
         if (!$form->isValid()) {
 
-            $this->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
+            $dispatcher->dispatch(NotificationEvents::NOTIFICATION_ERROR, new NotificationErrorEvent($form->getErrorsAsString()));
             $logger->error("Error de envio de datos post: " . $form->getErrorsAsString());
 
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Not valid request.');
@@ -105,7 +107,7 @@ class NotificationsController extends Controller
         $em->flush();
 
         $event = new NotificationEvent($notification);
-        $this->dispatch("notification." . strtolower($notification->getMessageType()), $event);
+        $dispatcher->dispatch("notification." . strtolower($notification->getMessageType()), $event);
 
         $logger->info('Notificacion recibida con exito', array(
             'NOTIFICATION_ID' => $notification->getMessageId(),
