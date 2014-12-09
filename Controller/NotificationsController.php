@@ -69,7 +69,7 @@ class NotificationsController extends \Mayeco\BaseBundle\Controller\Controller
             'OrderNumber_Id' => $response->getOrderNumber(),
         ));
 
-        return $this->redirectToRoute("app_default_pago");
+        return $this->redirectToRoute($this->container->getParameter('mayeco_notifications.redirection_route'));
     }
 
     public function getNotificationAction(Request $request)
