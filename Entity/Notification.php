@@ -173,15 +173,6 @@ class Notification
      */
     private $md5_hash;
 
-
-
-
-
-
-
-
-
-
     /**
      * @var string
      *
@@ -223,19 +214,6 @@ class Notification
      * @ORM\Column(name="bill_city", type="string", length=255, nullable=true)
      */
     private $bill_city;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @var string
@@ -285,15 +263,6 @@ class Notification
      * @ORM\Column(name="customer_ip_country", type="string", length=255, nullable=true)
      */
     private $customer_ip_country;
-
-
-
-
-
-
-
-
-
 
     /**
      * @var string
@@ -374,9 +343,6 @@ class Notification
      */
     private $item_recurrence_1;
 
-
-
-
     /**
      * @var string
      *
@@ -384,15 +350,12 @@ class Notification
      */
     private $raw_data;
 
-
-
     public function __construct()
     {
         $this->sale_date_placed = new \DateTime();
         $this->timestamp = new \DateTime();
         $this->item_rec_date_next_1 = new \DateTime();
     }
-
 
     /**
      * @return mixed
@@ -802,11 +765,6 @@ class Notification
         $this->bill_city = $bill_city;
     }
 
-
-
-
-
-
     /**
      * @return string
      */
@@ -918,10 +876,6 @@ class Notification
     {
         $this->customer_ip_country = $customer_ip_country;
     }
-
-
-
-
 
     /**
      * @return string
