@@ -66,7 +66,7 @@ class ResponseType extends AbstractType
             ->add('li_0_type')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
