@@ -20,6 +20,8 @@ namespace Mayeco\NotificationsBundle;
 final class NotificationEvents
 {
 
+    const RESPONSE_SUCCESS = 'notification.response_success';
+    
     const ORDER_CREATED = 'notification.order_created';
 
     const FRAUD_STATUS_CHANGED = 'notification.fraud_status_changed';
@@ -41,8 +43,6 @@ final class NotificationEvents
     const RECURRING_RESTARTED  = 'notification.recurring_restarted';
 
     const NOTIFICATION_ERROR  = 'notification.notification_error';
-
-    const RESPONSE_SUCCESS = 'notification.response_success';
 
     const RESPONSE_ERROR  = 'notification.response_error';
 
