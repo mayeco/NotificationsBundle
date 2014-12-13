@@ -40,10 +40,10 @@ final class NotificationEvents
 
     const RECURRING_RESTARTED  = 'notification.recurring_restarted';
 
-    const NOTIFICATION_ERROR  = 'notification.error';
+    const NOTIFICATION_ERROR  = 'notification.notification_error';
 
-    const RESPONSE_SUCCESS = 'response.success';
+    const RESPONSE_SUCCESS = 'notification.response_success';
 
-    const RESPONSE_ERROR  = 'response.error';
+    const RESPONSE_ERROR  = 'notification.response_error';
 
 }
