@@ -56,8 +56,7 @@ class NotificationsController extends Controller
         $response->setRawData(json_encode($request->query->all()));
         $this->persistAndflush($response);
 
-        $event = new ResponseEvent($response);
-        $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_SUCCESS, $event);
+        $this->get('event_dispatcher')->dispatch(NotificationEvents::RESPONSE_SUCCESS, new ResponseEvent($response));
         $this->get('logger')->info('New response success', array(
             'OrderNumber_Id' => $response->getOrderNumber(),
         ));
@@ -86,8 +85,7 @@ class NotificationsController extends Controller
         $notification->setRawData(json_encode($request->request->all()));
         $this->persistAndflush($notification);
 
-        $event = new NotificationEvent($notification);
-        $this->get('event_dispatcher')->dispatch("notification." . strtolower($notification->getMessageType()), $event);
+        $this->get('event_dispatcher')->dispatch("notification." . strtolower($notification->getMessageType()), new NotificationEvent($notification));
         $this->get('logger')->info('New notifcation success', array(
             'NOTIFICATION_ID' => $notification->getMessageId(),
         ));
